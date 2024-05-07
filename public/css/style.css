@@ -70,3 +70,7 @@ form {
 .form-group > input::placeholder{
     color: rgba(255, 255, 255, 0.596);
 }
+.text-center{
+    font-size: 20px;
+    font-weight: 500;
+}
