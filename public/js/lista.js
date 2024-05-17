@@ -4,6 +4,7 @@ const listaComprados = document.getElementById('listaComprados');
 const totalElement = document.getElementById('total');
 
 let valorTotal = 0;
+let itens = [];
 
 document.getElementById('nomeProduto').classList.add('form-control');
 document.getElementById('quantidade').classList.add('form-control');
@@ -19,25 +20,21 @@ formulario.addEventListener('submit', function(event) {
     const categoria = document.getElementById('categoria').value;
     let valorProduto = document.getElementById('valorProduto').value;
     
-    // Substituir o símbolo de moeda e as vírgulas por pontos
     valorProduto = valorProduto.replace(/[^\d.,]/g, '').replace(',', '.');
     
-    // Converter a quantidade e o valor do produto para números
     quantidade = parseFloat(quantidade);
     valorProduto = parseFloat(valorProduto);
     
-    // Calcular o valor do item com base na unidade
     let valorItem;
     if (unidade === 'kg') {
         valorItem = quantidade * valorProduto;
     } else {
-        // Converter a quantidade para a unidade de base (gramas ou mililitros)
         switch (unidade) {
             case 'g':
-                quantidade *= 0.001; // Converter gramas para quilogramas
+                quantidade *= 0.001;
                 break;
             case 'ml':
-                quantidade *= 0.001; // Converter mililitros para litros
+                quantidade *= 0.001;
                 break;
             default:
                 break;
@@ -113,16 +110,32 @@ formulario.addEventListener('submit', function(event) {
         novoItem.appendChild(itemContainer);
         novoItem.appendChild(buttonContainer);
 
-        listaCompras.appendChild(novoItem);
+        itens.push(novoItem);
 
-        // Limpar os campos do formulário
+        itens.sort(function(a, b) {
+            const nomeA = a.querySelector('span').textContent.toUpperCase();
+            const nomeB = b.querySelector('span').textContent.toUpperCase();
+            if (nomeA < nomeB) {
+                return -1;
+            }
+            if (nomeA > nomeB) {
+                return 1;
+            }
+            return 0;
+        });
+
+        listaCompras.innerHTML = '';
+
+        for (let item of itens) {
+            listaCompras.appendChild(item);
+        }
+
         document.getElementById('nomeProduto').value = '';
         document.getElementById('quantidade').value = '';
         document.getElementById('unidade').value = '';
         document.getElementById('categoria').value = '';
         document.getElementById('valorProduto').value = '';
 
-        // Verificar se a lista está vazia
         checkEmptyList();
     }
 });
@@ -143,13 +156,11 @@ function checkEmptyList() {
         listaCompradosContainer.style.display = 'block';
     }
 
-    // Verificar se ambas as listas estão vazias
     if (listaCompras.children.length === 0 && listaComprados.children.length === 0) {
-        totalElement.style.display = 'none'; // Ocultar o elemento "Valor Total"
+        totalElement.style.display = 'none';
     } else {
-        totalElement.style.display = 'block'; // Mostrar o elemento "Valor Total"
+        totalElement.style.display = 'block';
     }
 }
 
-// Chamar a função checkEmptyList no carregamento da página
 document.addEventListener('DOMContentLoaded', checkEmptyList);

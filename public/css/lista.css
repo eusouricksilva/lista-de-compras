@@ -7,9 +7,10 @@ body {
     margin: 0;
 }
 
-.d-flex{
-    height: 100vh;
+.d-flex {
+    height: auto;
 }
+
 
 .container {
     max-width: 960px;
