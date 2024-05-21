@@ -5,6 +5,12 @@
     padding: 0;
 }
 
+body {
+    overflow-y: auto;
+    position: relative;
+    padding-bottom: 80px; /* Espaçamento no final da página */
+}
+
 h1 {
     margin-left: 10px;
 }
@@ -16,6 +22,15 @@ p {
    margin-left: 10px;
    margin-right: 10px;
 }
+#listSection {
+    height: calc(100vh - 200px); /* Ajuste o valor conforme necessário */
+    overflow-y: auto;
+    scrollbar-width: none; /* Para Firefox */
+    -ms-overflow-style: none;  /* Para Internet Explorer e Edge */
+}
+#listSection::-webkit-scrollbar {
+    display: none; /* Para Chrome, Safari e Opera */
+}
 .criar {
     width: 50%;
     position: fixed;
@@ -23,8 +38,6 @@ p {
     bottom: 80px;
     z-index: 9999;
 }
-
-
 footer {
     position: fixed;
     bottom: 0;
@@ -33,3 +46,12 @@ footer {
 .btn-group .btn {
     width: 50%;
 }
+.card {
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 15px;
+}
+.modal-content {
+    background-color: black;
+}
+

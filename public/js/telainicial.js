@@ -16,15 +16,17 @@ document.addEventListener("DOMContentLoaded", function() {
         var progress = (item.completed / item.total) * 100;
 
         var card = `
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">${item.title}</h5>
-                <span class="badge text-bg-primary rounded-pill">${item.completed}/${item.total}</span>
-                <div class="progress mt-2">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: ${progress}%"></div>
-                </div>
-            </div>
-        </div>
+        <a href="lista.html" class="text-decoration-none text-dark">
+          <div class="card mb-3 rounded">
+              <div class="card-body">
+                  <h5 class="card-title">${item.title}</h5>
+                  <span class="badge text-bg-primary rounded-pill">${item.completed}/${item.total}</span>
+                  <div class="progress mt-2">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: ${progress}%"></div>
+                  </div>
+              </div>
+          </div>
+        </a>
         `;
 
         return card;
@@ -34,5 +36,14 @@ document.addEventListener("DOMContentLoaded", function() {
     var listSection = document.getElementById('listSection');
     listItems.forEach(function(item) {
         listSection.innerHTML += createCard(item);
+    });
+
+    // Adiciona um manipulador de eventos ao botão "Criar"
+    document.querySelector('.btn-success').addEventListener('click', function() {
+        var listaNome = document.getElementById('listaNome').value;
+        if (listaNome) {
+            listItems.push({title: listaNome, completed: 0, total: 0});
+            listSection.innerHTML += createCard({title: listaNome, completed: 0, total: 0});
+        }
     });
 });

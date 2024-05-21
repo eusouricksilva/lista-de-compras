@@ -20,18 +20,47 @@
     </p>
   </header>
   <section id="listSection">
+    <p style="display: none;">
+      Você ainda não criou nenhuma lista! Clique no botão abaixo e crie sua primeira!
+    </p>
   </section>
 
-  <button type="button" class="btn btn-outline-warning criar">+ Criar Lista</button>
+  <!-- Botão para abrir o modal -->
+<button type="button" class="btn btn-outline-warning criar" data-bs-toggle="modal" data-bs-target="#criarListaModal">+ Criar Lista</button>
+
+<!-- Modal -->
+<div class="modal fade" id="criarListaModal" tabindex="-1" aria-labelledby="criarListaModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-light">
+      <div class="modal-header">
+        <h5 class="modal-title" id="criarListaModalLabel">Criando minha lista 🛒</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulário dentro do modal -->
+        <form>
+          <div class="mb-3">
+            <label for="listaNome" class="form-label"></label>
+            <input type="text" class="form-control" id="listaNome" placeholder="Dê um nome a sua Lista">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success">Criar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
   <footer>
     <div class="btn-group d-flex" role="group" aria-label="Basic radio toggle button group">
       <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-      <label class="btn btn-outline-primary w-50" for="btnradio1">Listas</label>
+      <label class="btn btn-outline-success w-50" for="btnradio1">Listas</label>
     
       <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-      <label class="btn btn-outline-primary w-50" for="btnradio2">Perfil</label>
+      <label class="btn btn-outline-success w-50" for="btnradio2">Perfil</label>
     </div>
   </footer>
 
