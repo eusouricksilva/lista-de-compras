@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-left: 10px;
+}
+p {
+    margin-right: 10px;
+}
+.listas {
+   border-radius: 10px;
+   margin-left: 10px;
+   margin-right: 10px;
+}
+.criar {
+    width: 50%;
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+    z-index: 9999;
+}
+
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.btn-group .btn {
+    width: 50%;
+}
