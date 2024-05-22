@@ -11,6 +11,10 @@ body {
     padding-bottom: 80px; /* Espaçamento no final da página */
 }
 
+.bg {
+    background-color: rgba(0, 0, 0, 0.87);
+}
+
 h1 {
     margin-left: 10px;
 }
@@ -32,7 +36,7 @@ p {
     display: none; /* Para Chrome, Safari e Opera */
 }
 .criar {
-    width: 50%;
+    width: 40%;
     position: fixed;
     right: 20px;
     bottom: 80px;
