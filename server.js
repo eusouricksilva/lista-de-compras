@@ -17,6 +17,10 @@ app.get('/home', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'telainicial.html'));
 });
 
+app.get('/lista', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'lista.html'));
+});
+
 app.post('/api/cadastro', (req, res) => {
     const { firstName, lastName, email, password } = req.body;
 
@@ -47,11 +51,6 @@ app.post('/api/login', (req, res) => {
 
         res.sendStatus(200);
     });
-});
-
-// Rota para servir a página inicial após o login
-app.get('/home', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'telainicial.html'));
 });
 
 app.get('/api/lists', (req, res) => {
